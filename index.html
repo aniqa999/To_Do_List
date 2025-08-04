@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>To_Do_List App</title>
+  <link rel="stylesheet" href="index.css" />
+</head>
+<body>
+  <div class="container">
+    <div class="sidebar">
+      <h3>Boardly</h3>
+      <p>Where Tasks Take Shape</p>
+      <button onclick="showHome()">Home</button>
+      <button onclick="location.href='profile.html'">Profile</button>
+      <button onclick="toggleFormDisplay()">Create Account</button>
+      <button onclick="location.href='addtask.html'">Add Task</button>
+      <button onclick="location.href='update_task.html'">Update Task</button>
+      <button onclick="location.href='delete_task.html'">Delete Task</button>
+      <button onclick="location.href='reminder.html'">Reminder</button>
+    </div>
+
+    <div class="main">
+
+      <div class="search-wrapper">
+  <input type="text" id="searchBar" placeholder="🔍 Search tasks..." oninput="searchTasks()">
+</div>
+
+
+      <!-- Carousel Section -->
+      <div class="carousel-wrapper">
+        <div id="carousel" class="carousel">
+          <img src="https://picsum.photos/600/250?random=1" class="slide active">
+          <img src="https://picsum.photos/600/250?random=2" class="slide">
+          <img src="https://picsum.photos/600/250?random=3" class="slide">
+        </div>
+      </div>
+
+
+<!-- App Flow Section -->
+<div class="section-box flow">
+  <h2>📋 How Our App Works</h2>
+
+  <div class="flow-flex">
+    
+    <!-- Left Section -->
+    <div class="flow-left animate-left">
+      <h3>Getting Started</h3>
+      <p>
+        Step 1: Create your account<br>
+        Step 2: Use sidebar to add tasks
+      </p>
+    </div>
+
+    <!-- Right Section -->
+    <div class="flow-right animate-right">
+      <h3>Managing Workflow</h3>
+
+      <div class="workflow-box">
+        <p>Step 3: Drag & drop to manage tasks</p>
+      </div>
+
+      <div class="workflow-box">
+        <p>Step 4: Track progress easily</p>
+      </div>
+
+      <div class="workflow-box">
+        <p>Step 5: Stay organized always</p>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- FAQ section -->
+<div class="section-box faq">
+  <h2>Frequently Asked Questions</h2>
+
+  <div class="faq-item" onclick="toggleAnswer(this)">
+    <div class="question">
+      What is Boardly? <span class="arrow">▼</span>
+    </div>
+    <div class="answer">Boardly is a simple, elegant task management app designed for productivity.</div>
+  </div>
+
+  <div class="faq-item" onclick="toggleAnswer(this)">
+    <div class="question">
+      Can I update or delete a task? <span class="arrow">▼</span>
+    </div>
+    <div class="answer">Yes, use the sidebar to update or delete tasks under task board sections.</div>
+  </div>
+
+  <div class="faq-item" onclick="toggleAnswer(this)">
+    <div class="question">
+      Is account creation required? <span class="arrow">▼</span>
+    </div>
+    <div class="answer">No, you can explore the app without login, but profiles save your tasks.</div>
+  </div>
+</div>
+
+
+
+      <div id="form-box" class="form-box hidden">
+        <h2 id="form-title">Login</h2>
+        <input type="text" id="username" placeholder="Username">
+        <input type="password" id="password" placeholder="Password">
+        <button onclick="handleAuth()">Submit</button>
+        <p id="toggle-form">Don't have an account? <a href="#" onclick="toggleForm()">Sign Up</a></p>
+      </div>
+
+    </div>
+  </div>
+  <script src="index.js"></script>
+</body>
+</html>
