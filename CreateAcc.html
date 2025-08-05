@@ -3,17 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Purple Web App</title>
+    <title>Task_Manager_App
+    </title>
      <link rel="stylesheet" href="index.css" />
       <link rel="stylesheet" href="./Acc.css" />
-    
-       
+      <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+
 </head>
 <body>
     <!-- Landing Page -->
     <div class="landing-page" id="landingPage">
         <header class="header">
-            <div class="logo">Purple App</div>
+            <div class="logo">Boardly</div>
             <div class="nav-buttons">
                 <button class="btn btn-primary" onclick="showCreateAccountForm()">Create Account</button>
                 <button class="btn btn-secondary" onclick="showProfile()" id="profileBtn" style="display: none;">Profile</button>
@@ -22,17 +23,24 @@
 
         <main class="main-content">
             <section class="welcome-section">
-                <h1>Welcome to Purple App</h1>
-                <p>Experience the perfect blend of functionality and elegance with our premium web application.</p>
-                <button class="btn btn-primary" onclick="showCreateAccountForm()" style="font-size: 1.1rem; padding: 1rem 2rem;">Get Started</button>
+                <h1>Welcome to Boardly</h1>
+<p>Boardly is your smart Task Manager – create, organize, and track your to-do lists with ease and style.</p>
+
+                <button class="btn btn-primary" id="getStartedBtn" onclick="showCreateAccountForm()">
+  Get Started
+</button>
+
+
+
             </section>
         </main>
+
     </div>
 
     <!-- Home Page -->
     <div class="home-page" id="homePage">
         <header class="home-header">
-            <div class="home-logo">Purple App</div>
+            <div class="home-logo">Boardly</div>
             <div class="user-info">
                 <span>👋 Welcome, <span id="homeUserName">User</span></span>
                 <button class="btn btn-secondary" onclick="showProfile()" style="margin-left: 1rem;">Profile</button>
@@ -60,6 +68,7 @@
                     <p class="feature-desc">Your data is protected with enterprise-grade security</p>
                 </div>
             </div>
+        
         </main>
     </div>
 <!-- ............................................................................................ -->
@@ -175,7 +184,7 @@
   </div>
   
     <!-- ------------------------------------------------------------------------------------------------------- -->
-    <!-- Modal Overlay -->
+     <!-- Modal Overlay -->
     <div class="modal-overlay" id="modalOverlay">
         <div class="form-modal" id="formModal">
             <button class="close-btn" onclick="closeModal()">&times;</button>
@@ -237,9 +246,100 @@
         </div>
     </div>
 
-   
-    <script src="index.js"></script>
-      <script src="./Acc.css"></script>
+    <script>
+        // User data storage
+        let userData = {
+            fullName: '',
+            email: '',
+            phone: '',
+            profession: '',
+            city: '',
+            isLoggedIn: false
+        };
 
+        // Show create account form
+        function showCreateAccountForm() {
+            document.getElementById('modalOverlay').classList.add('active');
+            document.getElementById('formModal').style.display = 'block';
+            document.getElementById('profileSection').style.display = 'none';
+        }
+
+        // Show profile
+        function showProfile() {
+            if (userData.isLoggedIn) {
+                document.getElementById('modalOverlay').classList.add('active');
+                document.getElementById('formModal').style.display = 'none';
+                document.getElementById('profileSection').style.display = 'block';
+                updateProfileDisplay();
+            } else {
+                showCreateAccountForm();
+            }
+        }
+
+        // Close modal
+        function closeModal() {
+            document.getElementById('modalOverlay').classList.remove('active');
+        }
+
+        // Update profile display
+        function updateProfileDisplay() {
+            document.getElementById('profileName').textContent = userData.fullName;
+            document.getElementById('profileEmail').textContent = userData.email;
+            document.getElementById('profilePhone').textContent = userData.phone;
+            document.getElementById('profileProfession').textContent = userData.profession;
+            document.getElementById('profileCity').textContent = userData.city;
+            document.getElementById('profileAvatar').textContent = userData.fullName.charAt(0).toUpperCase();
+            document.getElementById('profileDate').textContent = new Date().toLocaleDateString();
+        }
+
+        // Handle form submission
+        document.getElementById('signupForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Save form data
+            userData.fullName = document.getElementById('fullName').value;
+            userData.email = document.getElementById('email').value;
+            userData.phone = document.getElementById('phone').value;
+            userData.profession = document.getElementById('profession').value;
+            userData.city = document.getElementById('city').value;
+            userData.isLoggedIn = true;
+
+            // Show success animation
+            const submitBtn = document.querySelector('.submit-btn');
+            submitBtn.textContent = 'Account Created! ✓';
+            submitBtn.style.background = '#28a745';
+
+            setTimeout(() => {
+                closeModal();
+                showHomePage();
+            }, 1500);
+        });
+
+
+                function showHomePage() {
+
+       document.getElementById('landingPage').classList.add('hidden');
+          document.querySelector('.container').classList.add('active');
+             document.getElementById('homeUserName').textContent = userData.fullName;
+             document.getElementById('profileBtn').style.display = 'block';
+}
+
+
+        // Close modal when clicking outside
+        document.getElementById('modalOverlay').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeModal();
+            }
+        });
+
+        // Form inputs retain values
+        const formInputs = ['fullName', 'email', 'phone', 'profession', 'city'];
+        formInputs.forEach(inputId => {
+            document.getElementById(inputId).addEventListener('input', function() {
+                userData[inputId] = this.value;
+            });
+        });
+    </script>
+    <script src="index.js"></script>
 </body>
 </html>
