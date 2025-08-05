@@ -7,24 +7,15 @@ body {
   display: flex;
   width: 100%;
 }
-/* 
+
 .sidebar {
   width: 220px;
-  height: 250vh;
+  height: 120vh;
   background: linear-gradient(to bottom, #1e1e2f, #2c3e50); /* deep blue-purple blend */
   color: white;
   padding: 20px;
   box-shadow: 2px 0 12px rgba(0, 0, 0, 0.25);
   transition: all 0.3s ease;
-} */
-
-.sidebar {
-  width: 220px;
-  min-height: 100vh; /* instead of 250vh */
-  background: linear-gradient(to bottom, #1e1e2f, #2c3e50);
-  color: white;
-  padding: 20px;
-  box-shadow: 2px 0 12px rgba(0, 0, 0, 0.25);
 }
 
 .sidebar h3 {
@@ -372,92 +363,4 @@ body {
 
 .faq-item.active .arrow {
   transform: rotate(180deg);
-}
-.container {
-  display: flex;
-  width: 100%;
-  min-height: 100vh;
-}
-
-.main {
-  flex: 1;
-  padding: 30px;
-  display: flex;
-  flex-direction: column;
-  overflow-y: auto;  /* ALLOW SCROLLING */
-}
-
-
-/* --- To Do Promo Section Fix --- */
-.todo-promo-section {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background: #fff;
-  padding: 20px;
-  margin-top: 20px;
-  border-radius: 10px;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-  flex-shrink: 0;
-  flex-wrap: nowrap;
-  gap: 10px;
-}
-
-
-.person {
-  flex: 1;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.person img {
-  max-height: 280px;
-  width: auto;
-  object-fit: contain;
-}
-
-.center-text {
-  flex: 1;
-  padding: 10px;
-  text-align: center;
-}
-
-.center-text .logo {
-  width: 60px;
-  margin-bottom: 10px;
-}
-
-.center-text h1 {
-  font-size: 32px;
-  margin: 10px 0;
-}
-
-.center-text p {
-  font-size: 18px;
-  margin-bottom: 20px;
-}
-
-.get-started {
-  background-color: #0078d4;
-  color: white;
-  border: none;
-  padding: 12px 24px;
-  font-size: 16px;
-  border-radius: 6px;
-  cursor: pointer;
-  margin-bottom: 10px;
-}
-
-.learn-more {
-  display: block;
-  margin-top: 10px;
-  color: #0078d4;
-  text-decoration: none;
-}
-
-.download-icons img {
-  width: 32px;
-  margin: 0 5px;
-  margin-top: 20px;
 }
